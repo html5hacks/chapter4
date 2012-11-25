@@ -1,0 +1,58 @@
+.container
+    header.jumbotron.masthead
+        .inner
+        h2 Hack #41 Accelerate Animation with Canvas Drawings
+        div.row
+            canvas#moveSmile(width="800", height="200")
+
+script
+    var x =  0;
+    var speed = 6; //how many piels it moves forward on each loop determins how fast it moves
+    var canvas  = document.getElementById("moveSmile");
+    var smileCtx6 = canvas.getContext("2d");
+    
+    function animate() {
+    
+        reqAnimFrame = window.mozRequestAnimationFrame||window.webkitRequestAnimationFrame||window.msRequestAnimationFrame||window.oRequestAnimationFrame
+        reqAnimFrame(animate);
+    
+        x += speed;
+    
+        if(x <= 0 || x >= 600){
+            speed = -speed;  //determins if it moves forwards or backwards;
+        }
+    
+        draw();
+    }
+    
+    
+    function draw() {
+    
+        smileCtx6.clearRect(0, 0, 800, 200);
+
+        smileCtx6.beginPath();
+        
+        smileCtx6.fillStyle = '#F1F42E';
+        smileCtx6.arc(x+100,100,99,0,Math.PI*2); // head
+    
+        smileCtx6.stroke();
+        smileCtx6.fill();
+    
+        smileCtx6.beginPath();
+        smileCtx6.moveTo(x+170,100);
+        smileCtx6.arc(x+100,100,70,0,Math.PI);   // Mouth
+        smileCtx6.stroke();
+    
+        smileCtx6.beginPath();
+        smileCtx6.fillStyle = 'black';
+        smileCtx6.moveTo(x+60, 65);
+        smileCtx6.arc(x+60,65,12,0,Math.PI*2);  // Left eye
+        smileCtx6.fill();
+        
+        smileCtx6.beginPath();
+        smileCtx6.moveTo(x+140,65);
+        smileCtx6.arc(x+140,65,12,0,Math.PI*2);  // Right eye
+        smileCtx6.fill();
+    }
+    
+    animate();

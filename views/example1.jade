@@ -1,0 +1,259 @@
+.container
+    header.jumbotron.masthead
+        .inner
+        h2 Hack #37 Draw Shapes on Your HTML5 canvas Tag
+        .row
+            .span-6
+                xcanvas#myCanvas(width="200",height="200")
+            .span-6
+                xcanvas#myCanvas2(width="200",height="200")
+            .span-6
+                xcanvas#mySmile(width="200",height="200")
+            .span-6
+                xcanvas#mySmile2(width="200",height="200")
+            .span-6
+                xcanvas#mySmile3(width="200",height="200")
+            .span-6
+                xcanvas#mySmile4(width="200",height="200")
+            .span-6
+                xcanvas#mySmile5(width="200",height="200")
+            .span-6
+                canvas#mySmile6(width="200",height="200")
+
+script
+    var myCanvas = document.getElementById('myCanvas')
+    var myContext = myCanvas.getContext('2d');
+
+    myContext.beginPath();
+    for(i=0; i<201; i++){
+
+    myContext.moveTo(0,i);
+    myContext.lineTo(200,i);
+    i+=10;
+    }
+
+    for(i=0; i<201; i++){
+
+    myContext.moveTo(i,0);
+    myContext.lineTo(i, 200);
+    i+=10;
+    }
+
+    myContext.stroke();
+
+script
+    var myCanvas = document.getElementById('myCanvas2')
+    var myContext = myCanvas.getContext('2d');
+    myContext.strokeStyle = '#1487E0';
+
+    myContext.beginPath();
+    for(i=0; i<201; i++){
+
+    myContext.moveTo(0,i);
+    myContext.lineTo(200,i);
+    i+=10;
+    }
+    myContext.stroke();
+    myContext.beginPath();
+    myContext.strokeStyle = '#B1CADD';
+
+    for(i=0; i<201; i++){
+
+    myContext.moveTo(i,0);
+    myContext.lineTo(i, 200);
+    i+=10;
+    }
+
+
+    myContext.stroke();
+
+    var myCanvas = document.getElementById('myCanvas2');
+    var myCtx = myCanvas.getContext('2d');
+    myCtx.strokeRect(10,10, 180, 180);
+    myCtx.fillRect(20,20, 140, 140);
+    myCtx.clearRect(50,50, 100, 100);
+
+script
+    var mySmile = document.getElementById('mySmile')
+    var smileCtx = mySmile.getContext('2d');
+
+    smileCtx.beginPath();
+    smileCtx.arc(100,100,99,0,Math.PI*2); // head
+    smileCtx.moveTo(170,100);
+    smileCtx.arc(100,100,70,0,Math.PI);   // Mouth
+    smileCtx.stroke();
+
+    smileCtx.beginPath();
+    smileCtx.moveTo(60, 65);
+    smileCtx.arc(60,65,12,0,Math.PI*2);  // Left eye
+    smileCtx.fill();
+    
+    smileCtx.beginPath();
+    smileCtx.moveTo(140,65);
+    smileCtx.arc(140,65,12,0,Math.PI*2);  // Right eye
+    smileCtx.fill();
+    
+
+script
+    var mySmile = document.getElementById('mySmile2')
+    var smileCtx = mySmile.getContext('2d');
+
+    smileCtx.beginPath();
+    
+    smileCtx.fillStyle = '#F1F42E';
+    smileCtx.arc(100,100,99,0,Math.PI*2); // head
+
+    smileCtx.stroke();
+    smileCtx.fill();
+
+    smileCtx.beginPath();
+    smileCtx.moveTo(170,100);
+    smileCtx.arc(100,100,70,0,Math.PI);   // Mouth
+    smileCtx.stroke();
+
+    smileCtx.beginPath();
+    smileCtx.fillStyle = 'black';
+    smileCtx.moveTo(60, 65);
+    smileCtx.arc(60,65,12,0,Math.PI*2);  // Left eye
+    smileCtx.fill();
+    
+    smileCtx.beginPath();
+    smileCtx.moveTo(140,65);
+    smileCtx.arc(140,65,12,0,Math.PI*2);  // Right eye
+    smileCtx.fill();
+
+script
+    var mySmile = document.getElementById('mySmile3')
+    var smileCtx = mySmile.getContext('2d');
+
+    var radgrad = smileCtx.createRadialGradient(100,100,10,100,100,100);  
+    radgrad.addColorStop(.5, 'rgba(247,241,192,1)');  
+    radgrad.addColorStop(1, 'rgba(244,225,56,1)');  
+    smileCtx.beginPath();
+    
+    smileCtx.fillStyle = radgrad;
+    smileCtx.arc(100,100,99,0,Math.PI*2); // head
+
+    smileCtx.stroke();
+    smileCtx.fill();
+
+    smileCtx.beginPath();
+    smileCtx.moveTo(170,100);
+    smileCtx.arc(100,100,70,0,Math.PI);   // Mouth
+    smileCtx.stroke();
+
+    smileCtx.beginPath();
+    smileCtx.fillStyle = 'black';
+    smileCtx.moveTo(60, 65);
+    smileCtx.arc(60,65,12,0,Math.PI*2);  // Left eye
+    smileCtx.fill();
+    
+    smileCtx.beginPath();
+    smileCtx.moveTo(140,65);
+    smileCtx.arc(140,65,12,0,Math.PI*2);  // Right eye
+    smileCtx.fill();
+
+
+script
+    var mySmile = document.getElementById('mySmile4')
+    var smileCtx = mySmile.getContext('2d');
+
+    // create new image object to use as pattern
+    var img = new Image();
+    img.src = '/assets/img/heart.png';
+    img.onload = function(){
+
+    // create pattern
+    var myPattern = smileCtx.createPattern(img,'repeat');
+    smileCtx.fillStyle = myPattern;
+    smileCtx.arc(100,100,99,0,Math.PI*2); // head
+    smileCtx.stroke();
+    smileCtx.fill();
+
+    smileCtx.beginPath();
+    smileCtx.moveTo(170,100);
+    smileCtx.arc(100,100,70,0,Math.PI);   // Mouth
+    smileCtx.stroke();
+
+    smileCtx.beginPath();
+    smileCtx.fillStyle = 'black';
+    smileCtx.moveTo(60, 65);
+    smileCtx.arc(60,65,12,0,Math.PI*2);  // Left eye
+    smileCtx.fill();
+    
+    smileCtx.beginPath();
+    smileCtx.moveTo(140,65);
+    smileCtx.arc(140,65,12,0,Math.PI*2);  // Right eye
+    smileCtx.fill();
+    }
+
+script
+    var mySmile = document.getElementById('mySmile5')
+    var smileCtx = mySmile.getContext('2d');
+
+    // create new image object to use as pattern
+    var img2 = new Image();
+    img2.src = 'data:image/png;base64,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';
+    img2.onload = function(){
+
+    // create pattern
+    var myPattern = smileCtx.createPattern(img2,'repeat');
+    smileCtx.fillStyle = myPattern;
+    smileCtx.arc(100,100,99,0,Math.PI*2); // head
+    smileCtx.stroke();
+    smileCtx.fill();
+
+    smileCtx.beginPath();
+    smileCtx.moveTo(170,100);
+    smileCtx.arc(100,100,70,0,Math.PI);   // Mouth
+    smileCtx.stroke();
+
+    smileCtx.beginPath();
+    smileCtx.fillStyle = 'black';
+    smileCtx.moveTo(60, 65);
+    smileCtx.arc(60,65,12,0,Math.PI*2);  // Left eye
+    smileCtx.fill();
+    
+    smileCtx.beginPath();
+    smileCtx.moveTo(140,65);
+    smileCtx.arc(140,65,12,0,Math.PI*2);  // Right eye
+    smileCtx.fill();
+    }
+script
+    var mySmile = document.getElementById('mySmile6');
+    var smileCtx6 = '';
+    smileCtx6 = mySmile.getContext('2d');
+    /*if(window.devicePixelRatio == 2) { */
+        mySmile.setAttribute('width', 400);
+        mySmile.setAttribute('height', 400);
+        smileCtx6.scale(2, 2);
+        /*}*/
+
+
+    smileCtx6.beginPath();
+    
+    smileCtx6.fillStyle = '#F1F42E';
+    smileCtx6.arc(100,100,99,0,Math.PI*2); // head
+
+    smileCtx6.stroke();
+    smileCtx6.fill();
+
+    smileCtx6.beginPath();
+    smileCtx6.moveTo(170,100);
+    smileCtx6.arc(100,100,70,0,Math.PI);   // Mouth
+    smileCtx6.stroke();
+
+    smileCtx6.beginPath();
+    smileCtx6.fillStyle = 'black';
+    smileCtx6.moveTo(60, 65);
+    smileCtx6.arc(60,65,12,0,Math.PI*2);  // Left eye
+    smileCtx6.fill();
+    
+    smileCtx6.beginPath();
+    smileCtx6.moveTo(140,65);
+    smileCtx6.arc(140,65,12,0,Math.PI*2);  // Right eye
+    smileCtx6.fill();
+
+style
+    #mySmile6{width: 200px; height:200px}
+    
